@@ -29,7 +29,7 @@ This specification defines the following files along with their associated conte
 |  [calendar_dates.txt](#calendar_datestxt)  | Optional | Exceptions for the service IDs defined in the [calendar.txt](#calendartxt) file. If [calendar.txt](#calendartxt) includes ALL dates of service, this file may be specified instead of [calendar.txt](#calendartxt). |
 |  [fare_attributes.txt](#fare_attributestxt)  | Optional | Fare information for a transit organization's routes. |
 |  [fare_rules.txt](#fare_rulestxt)  | Optional | Rules for applying fare information for a transit organization's routes. |
-|  [shapes.txt](#shapes.txt)  | Optional | Rules for drawing lines on a map to represent a transit organization's routes. |
+|  [shapes.txt](#shapestxt)  | Optional | Rules for drawing lines on a map to represent a transit organization's routes. |
 |  [frequencies.txt](#frequenciestxt)  | Optional | Headway (time between trips) for routes with variable frequency of service. |
 |  [transfers.txt](#transferstxt)  | Optional | Rules for making connections at transfer points between routes. |
 |  [feed_info.txt](#feed_infotxt)  | Optional | Additional information about the feed itself, including publisher, version, and expiration information. |
