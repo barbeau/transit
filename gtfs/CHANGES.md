@@ -48,6 +48,10 @@ Every new feature adds complexity to the creation and reading of feeds. Therefor
 
 ### Revision History
 
+#### January 13, 2016
+
+* Transition of GTFS documentation to Github at https://github.com/google/transit
+
 #### February 2, 2015
 
 * Added stop_times.txt 'timepoint' proposal to spec: [discussion](https://groups.google.com/forum/?fromgroups#!topic/gtfs-changes/Ah-J9JP2rJY)
