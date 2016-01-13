@@ -20,7 +20,7 @@ Many applications are compatible with data in the GTFS format. The simplest way 
 
 Here are a few ways that interested software developers learn about public feeds:
 
-* A list of transit agencies who provide public feeds is available on the GoogleTransitDataFeed project site.
+* A list of transit agencies who provide public feeds is available on the [TransitWiki.org "Publicly-accessible public transportation data" page](http://www.transitwiki.org/TransitWiki/index.php?title=Publicly-accessible_public_transportation_data).
 * Several websites allows developers to subscribe to announcements about new and updated feeds, and serve as a registry of feeds:
   * [Gtfs Data Exchange.com](http://www.gtfs-data-exchange.com/)
   * [TransitFeeds.com](http://transitfeeds.com/)
