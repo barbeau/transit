@@ -234,7 +234,7 @@ File: **Required**
 
 ### calendar_dates.txt
 
-File: **Required**
+File: **Optional**
 
 The calendar_dates table allows you to explicitly activate or disable service IDs by date. You can use it in two ways.
 
