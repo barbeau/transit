@@ -1,6 +1,6 @@
 ## Example GTFS Feed
 
-This example GTFS feed shows comma-delimited data samples for each file in a transit feed. The sample data files shown here aren't all related to each other. You can also [download a complete GTFS feed](sample-feed-1.zip) in final form to work with as well.
+This example GTFS feed shows comma-delimited data samples for each file in a transit feed. The sample data files shown here aren't all related to each other. You can also [download a complete GTFS feed](sample-feed-1.zip) in final form to work with as well, or browse the individual files of that same feed online [here](sample-feed-1).
 
 ### agency.txt
 
