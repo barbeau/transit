@@ -20,19 +20,19 @@ This specification defines the following files along with their associated conte
 
 |  Filename | Required | Defines |
 |  ------ | ------ | ------ |
-|  [agency.txt](#agency.txt) | **Required** | One or more transit agencies that provide the data in this feed. |
-|  [stops.txt](#stops.txt) | **Required** | Individual locations where vehicles pick up or drop off passengers. |
-|  [routes.txt](#routes.txt) | **Required** | Transit routes. A route is a group of trips that are displayed to riders as a single service. |
-|  [trips.txt](#trips.txt)  | **Required** | Trips for each route. A trip is a sequence of two or more stops that occurs at specific time. |
-|  [stop_times.txt](#stop_times.txt)  | **Required** | Times that a vehicle arrives at and departs from individual stops for each trip. |
-|  [calendar.txt](#calendar.txt)  | **Required** | Dates for service IDs using a weekly schedule. Specify when service starts and ends, as well as days of the week where service is available. |
-|  [calendar_dates.txt](#calendar_dates.txt)  | Optional | Exceptions for the service IDs defined in the calendar.txt file. If calendar_dates.txt includes ALL dates of service, this file may be specified instead of calendar.txt. |
-|  [fare_attributes.txt](#fare_attributes.txt)  | Optional | Fare information for a transit organization's routes. |
-|  [fare_rules.txt](#fare_rules.txt)  | Optional | Rules for applying fare information for a transit organization's routes. |
+|  [agency.txt](#agencytxt) | **Required** | One or more transit agencies that provide the data in this feed. |
+|  [stops.txt](#stopstxt) | **Required** | Individual locations where vehicles pick up or drop off passengers. |
+|  [routes.txt](#routestxt) | **Required** | Transit routes. A route is a group of trips that are displayed to riders as a single service. |
+|  [trips.txt](#tripstxt)  | **Required** | Trips for each route. A trip is a sequence of two or more stops that occurs at specific time. |
+|  [stop_times.txt](#stop_timestxt)  | **Required** | Times that a vehicle arrives at and departs from individual stops for each trip. |
+|  [calendar.txt](#calendartxt)  | **Required** | Dates for service IDs using a weekly schedule. Specify when service starts and ends, as well as days of the week where service is available. |
+|  [calendar_dates.txt](#calendar_datestxt)  | Optional | Exceptions for the service IDs defined in the [calendar.txt](#calendartxt) file. If [calendar.txt](#calendartxt) includes ALL dates of service, this file may be specified instead of [calendar.txt](#calendartxt). |
+|  [fare_attributes.txt](#fare_attributestxt)  | Optional | Fare information for a transit organization's routes. |
+|  [fare_rules.txt](#fare_rulestxt)  | Optional | Rules for applying fare information for a transit organization's routes. |
 |  [shapes.txt](#shapes.txt)  | Optional | Rules for drawing lines on a map to represent a transit organization's routes. |
-|  [frequencies.txt](#frequencies.txt)  | Optional | Headway (time between trips) for routes with variable frequency of service. |
-|  [transfers.txt](#transfers.txt)  | Optional | Rules for making connections at transfer points between routes. |
-|  [feed_info.txt](#feed_info.txt)  | Optional | Additional information about the feed itself, including publisher, version, and expiration information. |
+|  [frequencies.txt](#frequenciestxt)  | Optional | Headway (time between trips) for routes with variable frequency of service. |
+|  [transfers.txt](#transferstxt)  | Optional | Rules for making connections at transfer points between routes. |
+|  [feed_info.txt](#feed_infotxt)  | Optional | Additional information about the feed itself, including publisher, version, and expiration information. |
 
 ### File Requirements
 
@@ -80,7 +80,7 @@ File: **Required**
 |  stop_desc | Optional | The **stop_desc** field contains a description of a stop. Please provide useful, quality information. Do not simply duplicate the name of the stop. |  |  |
 |  stop_lat | **Required** | The **stop_lat** field contains the latitude of a stop or station. The field value must be a valid WGS 84 latitude. |  |  |
 |  stop_lon | **Required** | The **stop_lon** field contains the longitude of a stop or station. The field value must be a valid WGS 84 longitude value from -180 to 180. |  |  |
-|  zone_id | Optional | The **zone_id** field defines the fare zone for a stop ID. Zone IDs are required if you want to provide fare information using [fare_rules.txt](#fare_rules.txt). If this stop ID represents a station, the zone ID is ignored. |  |  |
+|  zone_id | Optional | The **zone_id** field defines the fare zone for a stop ID. Zone IDs are required if you want to provide fare information using [fare_rules.txt](#fare_rulestxt). If this stop ID represents a station, the zone ID is ignored. |  |  |
 |  stop_url | Optional | The **stop_url** field contains the URL of a web page about a particular stop. This should be different from the agency_url and the route_url fields.  The value must be a fully qualified URL that includes **http**:// or **https**://, and any special characters in the URL must be correctly escaped. See http://www.w3.org/Addressing/URL/4_URI_Recommentations.html for a description of how to create fully qualified URL values. |  |  |
 |  location_type | Optional | The **location_type** field identifies whether this stop ID represents a stop or station. If no location type is specified, or the location_type is blank, stop IDs are treated as stops. Stations may have different properties from stops when they are represented on a map or used in trip planning.  The location type field can have the following values: |  |  |
 |   |  | * **0** or blank - Stop. A location where passengers board or disembark from a transit vehicle. |  |  |
@@ -90,7 +90,7 @@ File: **Required**
 |   |  | A stop located inside a station. | 0 or blank | The stop ID of the station where this stop is located. The stop referenced by parent_station must have location_type=1. |
 |   |  | A stop located outside a station. | 0 or blank | A blank value. The parent_station field doesn't apply to this stop. |
 |   |  | A station. | 1 | A blank value. Stations can't contain other stations. |
-|  stop_timezone | Optional | The **stop_timezone** field contains the timezone in which this stop or station is located. Please refer to [Wikipedia List of Timezones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) for a list of valid values. If omitted, the stop should be assumed to be located in the timezone specified by **agency_timezone** in [agency.txt](#agency.txt).   When a stop has a parent station, the stop is considered to be in the timezone specified by the parent station's **stop_timezone** value. If the parent has no stop_timezone value, the stops that belong to that station are assumed to be in the timezone specified by **agency_timezone**, even if the stops have their own **stop_timezone** values. In other words, if a given stop has a **parent_station** value, any **stop_timezone** value specified for that stop must be ignored.  Even if **stop_timezone** values are provided in stops.txt, the times in [stop_times.txt](#stop_times.txt) should continue to be specified as time since midnight in the timezone specified by **agency_timezone** in agency.txt. This ensures that the time values in a trip always increase over the course of a trip, regardless of which timezones the trip crosses. |  |  |
+|  stop_timezone | Optional | The **stop_timezone** field contains the timezone in which this stop or station is located. Please refer to [Wikipedia List of Timezones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) for a list of valid values. If omitted, the stop should be assumed to be located in the timezone specified by **agency_timezone** in [agency.txt](#agencytxt).   When a stop has a parent station, the stop is considered to be in the timezone specified by the parent station's **stop_timezone** value. If the parent has no stop_timezone value, the stops that belong to that station are assumed to be in the timezone specified by **agency_timezone**, even if the stops have their own **stop_timezone** values. In other words, if a given stop has a **parent_station** value, any **stop_timezone** value specified for that stop must be ignored.  Even if **stop_timezone** values are provided in stops.txt, the times in [stop_times.txt](#stop_timestxt) should continue to be specified as time since midnight in the timezone specified by **agency_timezone** in agency.txt. This ensures that the time values in a trip always increase over the course of a trip, regardless of which timezones the trip crosses. |  |  |
 |  wheelchair_boarding | Optional | The **wheelchair_boarding field** identifies whether wheelchair boardings are possible from the specified stop or station. The field can have the following values: |  |  |
 |   |  | * **0** (or empty) - indicates that there is no accessibility information for the stop |  |  |
 |   |  | * **1** - indicates that at least some vehicles at this stop can be boarded by a rider in a wheelchair |  |  |
@@ -107,7 +107,7 @@ File: **Required**
 |  Field Name | Required | Details |
 |  ------ | ------ | ------ |
 |  route_id | **Required** | The **route_id** field contains an ID that uniquely identifies a route. The route_id is dataset unique. |
-|  agency_id | Optional | The **agency_id** field defines an agency for the specified route. This value is referenced from the [agency.txt](#agency.txt) file. Use this field when you are providing data for routes from more than one agency. |
+|  agency_id | Optional | The **agency_id** field defines an agency for the specified route. This value is referenced from the [agency.txt](#agencytxt) file. Use this field when you are providing data for routes from more than one agency. |
 |  route_short_name | **Required** | The **route_short_name** contains the short name of a route. This will often be a short, abstract identifier like "32", "100X", or "Green" that riders use to identify a route, but which doesn't give any indication of what places the route serves. At least one of *route_short_name* or *route_long_name* must be specified, or potentially both if appropriate. If the route does not have a short name, please specify a *route_long_name* and use an empty string as the value for this field. |
 |  route_long_name | **Required** | The **route_long_name** contains the full name of a route. This name is generally more descriptive than the *route_short_name* and will often include the route's destination or stop. At least one of *route_short_name* or *route_long_name* must be specified, or potentially both if appropriate. If the route does not have a long name, please specify a *route_short_nam*e and use an empty string as the value for this field. |
 |  route_desc | Optional | The **route_desc** field contains a description of a route. Please provide useful, quality information. Do not simply duplicate the name of the route. For example, "**A** trains operate between Inwood-207 St, Manhattan and Far Rockaway-Mott Avenue, Queens at all times. Also from about 6AM until about midnight, additional **A** trains operate between Inwood-207 St and Lefferts Boulevard (trains typically alternate between Lefferts Blvd and Far Rockaway)." |
@@ -130,23 +130,28 @@ File: **Required**
 
 |  Field Name | Required | Details |
 |  ------ | ------ | ------ |
-|  route_id | **Required** | The **route_id** field contains an ID that uniquely identifies a route. This value is referenced from the [routes.txt](#routes.txt) file. |
-|  service_id | **Required** | The **service_id** contains an ID that uniquely identifies a set of dates when service is available for one or more routes. This value is referenced from the [calendar.txt](#calendar.txt) or [calendar_dates.txt](#calendar_dates) file. |
+|  route_id | **Required** | The **route_id** field contains an ID that uniquely identifies a route. This value is referenced from the [routes.txt](#routestxt) file. |
+|  service_id | **Required** | The **service_id** contains an ID that uniquely identifies a set of dates when service is available for one or more routes. This value is referenced from the [calendar.txt](#calendartxt) or [calendar_dates.txt](#calendar_datestxt) file. |
 |  trip_id | **Required** | The **trip_id** field contains an ID that identifies a trip. The **trip_id** is dataset unique. |
-|  trip_headsign | Optional | The **trip_headsign** field contains the text that appears on a sign that identifies the trip's destination to passengers. Use this field to distinguish between different patterns of service in the same route. If the headsign changes during a trip, you can override the **trip_headsign** by specifying values for the the **stop_headsign** field in [stop_times.txt](#stop_times.txt). |
+|  trip_headsign | Optional | The **trip_headsign** field contains the text that appears on a sign that identifies the trip's destination to passengers. Use this field to distinguish between different patterns of service in the same route. If the headsign changes during a trip, you can override the **trip_headsign** by specifying values for the the **stop_headsign** field in [stop_times.txt](#stop_timestxt). |
 |  trip_short_name | Optional | The **trip_short_name** field contains the text that appears in schedules and sign boards to identify the trip to passengers, for example, to identify train numbers for commuter rail trips. If riders do not commonly rely on trip names, please leave this field blank.  A **trip_short_name** value, if provided, should uniquely identify a trip within a service day; it should not be used for destination names or limited/express designations. |
 |  direction_id | Optional | The **direction_id** field contains a binary value that indicates the direction of travel for a trip. Use this field to distinguish between bi-directional trips with the same **route_id**. This field is not used in routing; it provides a way to separate trips by direction when publishing time tables. You can specify names for each direction with the **trip_headsign** field. |
 |   |  | * 0 - travel in one direction (e.g. outbound travel) |
 |   |  | * 1 - travel in the opposite direction (e.g. inbound travel) |
-|   |  | For example, you could use the *trip_headsign* and *direction_id* fields together to assign a name to travel in each direction for a set of trips. A [trips.txt](#trips.txt) file could contain these rows for use in time tables: |
+|   |  | For example, you could use the *trip_headsign* and *direction_id* fields together to assign a name to travel in each direction for a set of trips. A [trips.txt](#tripstxt) file could contain these rows for use in time tables: |
 |   |  | * `trip_id,...,trip_headsign,direction_id` |
 |   |  | * `1234,...,to Airport,0` |
 |   |  | * `1505,...,to Downtown,1` |
 |  block_id | Optional | The **block_id** field identifies the block to which the trip belongs. A block consists of two or more sequential trips made using the same vehicle, where a passenger can transfer from one trip to the next just by staying in the vehicle. The **block_id** must be referenced by two or more trips in trips.txt. |
-|  shape_id | Optional | The **shape_id** field contains an ID that defines a shape for the trip. This value is referenced from the [shapes.txt](#shapes.txt) file. The shapes.txt file allows you to define how a line should be drawn on the map to represent a trip. |
+|  shape_id | Optional | The **shape_id** field contains an ID that defines a shape for the trip. This value is referenced from the [shapes.txt](#shapestxt) file. The shapes.txt file allows you to define how a line should be drawn on the map to represent a trip. |
 |  wheelchair_accessible | Optional | * **0** (or empty) - indicates that there is no accessibility information for the trip |
 |   |  | * **1** - indicates that the vehicle being used on this particular trip can accommodate at least one rider in a wheelchair |
 |   |  | * **2** - indicates that no riders in wheelchairs can be accommodated on this trip |
 |  bikes_allowed | Optional | 0 (or empty) - indicates that there is no bike information for the trip |
 |   |  | * **1** - indicates that the vehicle being used on this particular trip can accommodate at least one bicycle |
 |   |  | * **2** - indicates that no bicycles are allowed on this trip |
+
+### stop_times.txt
+
+File: **Required**
+
